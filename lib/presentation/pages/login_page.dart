@@ -21,8 +21,6 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: EdgeInsets.only(
-                    left: (MediaQuery.of(context).size.width * 5) / 100),
                 constraints: BoxConstraints.tightFor(
                     width: (MediaQuery.of(context).size.width * 90) / 100),
                 child: Column(
