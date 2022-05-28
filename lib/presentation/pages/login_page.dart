@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -111,8 +110,11 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextButton.styleFrom(
                         backgroundColor: Color(0xFF0B6EFE),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                            side: BorderSide(color: Color(0xFF0B6EFE))),
+                          borderRadius: BorderRadius.circular(5.0),
+                          side: BorderSide(
+                            color: Color(0xFF0B6EFE),
+                          ),
+                        ),
                       ),
                     ),
                   ],

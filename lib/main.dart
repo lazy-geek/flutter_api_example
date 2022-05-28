@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_example/presentation/pages/home_page.dart';
 import 'package:flutter_api_example/presentation/pages/login_page.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const LoginPage(),
+      home: const HomePage(),
     );
   }
 }
