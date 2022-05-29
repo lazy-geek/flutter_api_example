@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^1.0.3
   google_fonts: ^2.3.2
   http: ^0.13.4
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - .env
     - assets/login-art.svg
     - assets/bg-waves.svg
 
