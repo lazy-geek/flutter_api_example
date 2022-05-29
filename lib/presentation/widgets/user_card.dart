@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_example/presentation/pages/details_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_api_example/data/models/user.dart';
 
@@ -26,7 +27,11 @@ class UserCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         child: InkWell(
           onTap: () {
-            print('object');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        DetailsPage(user: user)));
           },
 
           // highlightColor: Colors.blue,
