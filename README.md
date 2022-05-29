@@ -63,4 +63,7 @@ Run The App
 - http: for making api requests
 - flutter_dotenv: for environment variable
 - flutter_riverpod: for state management
-  
+- sharedPreference: for maintaining user session
+
+## Download App
+[Download](https://drive.google.com/file/d/12wlXyAYvbqdFQXN_rc0flMgLsYJiGRc2/view?usp=sharing)
