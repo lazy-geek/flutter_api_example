@@ -3,7 +3,6 @@ import 'package:flutter_api_example/business_logic/providers.dart';
 import 'package:flutter_api_example/data/models/user.dart';
 import 'package:flutter_api_example/data/services/user_service.dart';
 import 'package:flutter_api_example/presentation/widgets/outlined_radio_button.dart';
-import 'package:flutter_api_example/presentation/widgets/user_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
@@ -71,7 +70,7 @@ class _EditPageState extends ConsumerState<EditPage> {
                 keyboardType: TextInputType.name,
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
-                    icon: Icon(Icons.person_outlined),
+                    icon: const Icon(Icons.person_outlined),
                     hintText: 'name',
                     hintStyle: GoogleFonts.outfit(
                       fontSize: 14.sp,
@@ -92,7 +91,7 @@ class _EditPageState extends ConsumerState<EditPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               TextField(
@@ -100,7 +99,7 @@ class _EditPageState extends ConsumerState<EditPage> {
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
-                    icon: Icon(Icons.email_outlined),
+                    icon: const Icon(Icons.email_outlined),
                     hintText: 'email',
                     hintStyle: GoogleFonts.outfit(
                       fontSize: 14.sp,
@@ -121,7 +120,7 @@ class _EditPageState extends ConsumerState<EditPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               Row(
@@ -137,7 +136,7 @@ class _EditPageState extends ConsumerState<EditPage> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2.0,
                   ),
                   OutlinedRadioButton(
@@ -152,7 +151,7 @@ class _EditPageState extends ConsumerState<EditPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               Row(
@@ -168,7 +167,7 @@ class _EditPageState extends ConsumerState<EditPage> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2.0,
                   ),
                   OutlinedRadioButton(
@@ -190,8 +189,9 @@ class _EditPageState extends ConsumerState<EditPage> {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () async {
-                    if (email.text.trim() == "" || name.text.trim() == "")
+                    if (email.text.trim() == "" || name.text.trim() == "") {
                       return;
+                    }
                     User updatedUser = widget.user.copyWith(
                         email: email.text,
                         gender: currentGender == 0 ? 'male' : 'female',
@@ -213,7 +213,7 @@ class _EditPageState extends ConsumerState<EditPage> {
 
                     width: 30.w,
                     child: isLoading
-                        ? CircularProgressIndicator(
+                        ? const CircularProgressIndicator(
                             color: Colors.white,
                           )
                         : Row(
@@ -231,10 +231,10 @@ class _EditPageState extends ConsumerState<EditPage> {
                           ),
                   ),
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFF0B6EFE),
+                    backgroundColor: const Color(0xFF0B6EFE),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
-                      side: BorderSide(
+                      side: const BorderSide(
                         color: Color(0xFF0B6EFE),
                       ),
                     ),

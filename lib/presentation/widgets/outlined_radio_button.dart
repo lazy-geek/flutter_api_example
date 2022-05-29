@@ -45,10 +45,10 @@ class _OutlinedRadioButtonState extends State<OutlinedRadioButton> {
       ),
       style: widget.current == widget.index
           ? TextButton.styleFrom(
-              backgroundColor: Color(0xFF0B6EFE),
+              backgroundColor: const Color(0xFF0B6EFE),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0),
-                side: BorderSide(
+                side: const BorderSide(
                   color: Color(0xFF0B6EFE),
                 ),
               ),
@@ -57,7 +57,7 @@ class _OutlinedRadioButtonState extends State<OutlinedRadioButton> {
               primary: Colors.blue,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0),
-                side: BorderSide(
+                side: const BorderSide(
                   color: Colors.blue,
                 ),
               ),

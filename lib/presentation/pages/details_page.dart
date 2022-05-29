@@ -3,7 +3,6 @@ import 'package:flutter_api_example/business_logic/providers.dart';
 import 'package:flutter_api_example/data/models/user.dart';
 import 'package:flutter_api_example/data/services/user_service.dart';
 import 'package:flutter_api_example/presentation/pages/edit_page.dart';
-import 'package:flutter_api_example/presentation/widgets/user_card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
@@ -49,7 +48,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                         )));
             getData();
           },
-          backgroundColor: Color(0xFF0B6EFE),
+          backgroundColor: const Color(0xFF0B6EFE),
           isExtended: true,
           icon: const Icon(
             Icons.edit_outlined,
@@ -88,7 +87,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
         minimum: const EdgeInsets.only(left: 15.0, right: 15.0, top: 20),
         child: isLoading
             ? const Center(
-                child: const CircularProgressIndicator(),
+                child: CircularProgressIndicator(),
               )
             : Column(
                 children: [

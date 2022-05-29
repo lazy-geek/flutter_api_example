@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api_example/business_logic/providers.dart';
 import 'package:flutter_api_example/data/services/userpref_service.dart';
-import 'package:flutter_api_example/presentation/pages/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,11 +33,11 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 30.0,
                     ),
                     SvgPicture.asset('assets/login-art.svg'),
-                    SizedBox(
+                    const SizedBox(
                       height: 30.0,
                     ),
                     Text(
@@ -48,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20.0,
                     ),
                     TextField(
@@ -74,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(5.0),
                           )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20.0,
                     ),
                     TextField(
@@ -101,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(5.0),
                           )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40.0,
                     ),
                     TextButton(
@@ -126,13 +125,13 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               backgroundColor: Colors.red,
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                             ),
                           );
                         }
                       },
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 12.0),
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
                         alignment: Alignment.center,
                         width: double.maxFinite,
                         child: Text(
@@ -145,10 +144,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       style: TextButton.styleFrom(
-                        backgroundColor: Color(0xFF0B6EFE),
+                        backgroundColor: const Color(0xFF0B6EFE),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Color(0xFF0B6EFE),
                           ),
                         ),
@@ -157,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               SvgPicture.asset(

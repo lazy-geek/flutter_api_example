@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPrefService {
@@ -16,6 +15,5 @@ class UserPrefService {
   Future<void> setLogin(bool val) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     await sp.setBool('loggedIn', val);
-    print("done");
   }
 }

@@ -42,7 +42,8 @@ class UserCard extends ConsumerWidget {
           // highlightColor: Colors.blue,
           // splashColor: Colors.red,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 12.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -52,7 +53,7 @@ class UserCard extends ConsumerWidget {
                     Row(
                       children: [
                         Icon(Icons.person_outlined, size: 20.sp),
-                        SizedBox(
+                        const SizedBox(
                           width: 5.0,
                         ),
                         SizedBox(
@@ -70,7 +71,7 @@ class UserCard extends ConsumerWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15.0,
                 ),
                 Row(
@@ -81,7 +82,7 @@ class UserCard extends ConsumerWidget {
                       child: Row(
                         children: [
                           Icon(Icons.email_outlined, size: 16.sp),
-                          SizedBox(
+                          const SizedBox(
                             width: 5.0,
                           ),
                           SizedBox(
@@ -110,7 +111,7 @@ class UserCard extends ConsumerWidget {
                     // ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Row(
@@ -132,7 +133,7 @@ class UserCard extends ConsumerWidget {
                               Icons.delete_outlined,
                               size: 16.sp,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             Text(
@@ -146,10 +147,10 @@ class UserCard extends ConsumerWidget {
                         ),
                       ),
                       style: TextButton.styleFrom(
-                        primary: Color.fromARGB(255, 254, 11, 116),
+                        primary: const Color.fromARGB(255, 254, 11, 116),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Color.fromARGB(255, 254, 11, 116),
                           ),
                         ),
@@ -177,7 +178,7 @@ class UserCard extends ConsumerWidget {
                               size: 16.sp,
                               color: Colors.white,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             Text(
@@ -192,10 +193,10 @@ class UserCard extends ConsumerWidget {
                         ),
                       ),
                       style: TextButton.styleFrom(
-                        backgroundColor: Color(0xFF0B6EFE),
+                        backgroundColor: const Color(0xFF0B6EFE),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Color(0xFF0B6EFE),
                           ),
                         ),

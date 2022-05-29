@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api_example/business_logic/providers.dart';
 import 'package:flutter_api_example/data/models/user.dart';
-import 'package:flutter_api_example/data/services/user_service.dart';
 import 'package:flutter_api_example/data/services/userpref_service.dart';
 import 'package:flutter_api_example/presentation/pages/add_page.dart';
 import 'package:flutter_api_example/presentation/widgets/user_card.dart';
@@ -31,7 +30,6 @@ class HomePage extends ConsumerWidget {
                 onPressed: () async {
                   await UserPrefService.instance.setLogin(false);
                   ref.refresh(loginStatusProvider);
-                  print("hello");
                 },
                 child: Text(
                   'Logout',
@@ -44,11 +42,11 @@ class HomePage extends ConsumerWidget {
           ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddPage()));
           },
           backgroundColor: Colors.white,
-          child: Icon(
+          child: const Icon(
             Icons.add,
             color: Colors.black,
           )),
@@ -68,8 +66,8 @@ class HomePage extends ConsumerWidget {
                 },
               );
             },
-            error: (_, e) => Center(child: Text('something went wrong')),
-            loading: () => Center(
+            error: (_, e) => const Center(child: Text('something went wrong')),
+            loading: () => const Center(
                   child: CircularProgressIndicator(),
                 )),
       ),

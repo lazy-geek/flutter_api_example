@@ -24,12 +24,12 @@ class MyApp extends ConsumerWidget {
         home: isLoggedIn.when(
           data: (bool val) {
             if (val) {
-              return HomePage();
+              return const HomePage();
             }
             return LoginPage(ref: ref);
           },
-          error: (_, e) => Center(child: Text('something went wrong')),
-          loading: () => Center(
+          error: (_, e) => const Center(child: Text('something went wrong')),
+          loading: () => const Center(
             child: CircularProgressIndicator(),
           ),
         ),
