@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_example/business_logic/providers.dart';
+import 'package:flutter_api_example/data/services/user_service.dart';
 import 'package:flutter_api_example/presentation/pages/details_page.dart';
+import 'package:flutter_api_example/presentation/pages/edit_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_api_example/data/models/user.dart';
 
-class UserCard extends StatelessWidget {
+class UserCard extends ConsumerWidget {
   final User user;
   const UserCard({Key? key, required this.user}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: const BoxDecoration(boxShadow: [
         BoxShadow(
@@ -31,7 +35,7 @@ class UserCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (BuildContext context) =>
-                        DetailsPage(user: user)));
+                        DetailsPage(id: user.id)));
           },
 
           // highlightColor: Colors.blue,
@@ -132,7 +136,10 @@ class UserCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(
-                      onPressed: () => {},
+                      onPressed: () async {
+                        await UserService.instance.deleteUserById(user.id);
+                        ref.refresh(usersProvider);
+                      },
                       child: Container(
                         // padding: EdgeInsets.symmetric(vertical: 12.0),
                         alignment: Alignment.center,
@@ -168,7 +175,14 @@ class UserCard extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () => {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditPage(
+                                      user: user,
+                                    )));
+                      },
                       child: Container(
                         // padding: EdgeInsets.symmetric(vertical: 12.0),
                         alignment: Alignment.center,
