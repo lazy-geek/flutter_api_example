@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_example/business_logic/providers.dart';
 import 'package:flutter_api_example/data/models/user.dart';
 import 'package:flutter_api_example/data/services/user_service.dart';
+import 'package:flutter_api_example/presentation/pages/add_page.dart';
 import 'package:flutter_api_example/presentation/widgets/user_card.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    AsyncValue<List<User>> userList = ref.watch(usersProvider);
     return Scaffold(
       backgroundColor: const Color(0xFFf2f2f2),
       appBar: AppBar(
@@ -25,37 +24,36 @@ class _HomePageState extends State<HomePage> {
               fontWeight: FontWeight.w400,
             ),
           )),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AddPage()));
+          },
+          backgroundColor: Colors.white,
+          child: Icon(
+            Icons.add,
+            color: Colors.black,
+          )),
       body: SafeArea(
         minimum: const EdgeInsets.only(left: 15.0, right: 15.0, top: 20),
-        child: FutureBuilder(
-          future: UserService.instance.getAllUsers(),
-          builder: (BuildContext context, AsyncSnapshot<List<User>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done &&
-                snapshot.data == null) {
-              return Container();
-            } else if (snapshot.hasData &&
-                snapshot.connectionState == ConnectionState.done &&
-                snapshot.data != null) {
+        child: userList.when(
+            data: (List<User> users) {
               return ListView.separated(
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(
                     height: 20,
                   );
                 },
-                itemCount: snapshot.data?.length ?? 0,
+                itemCount: users.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return UserCard(user: snapshot.data![index]);
+                  return UserCard(user: users[index]);
                 },
               );
-            } else if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: const CircularProgressIndicator(),
-              );
-            } else {
-              return Container();
-            }
-          },
-        ),
+            },
+            error: (_, e) => Center(child: Text('something went wrong')),
+            loading: () => Center(
+                  child: CircularProgressIndicator(),
+                )),
       ),
     );
   }
