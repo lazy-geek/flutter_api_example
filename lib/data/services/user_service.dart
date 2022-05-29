@@ -11,7 +11,6 @@ class UserService {
   static final UserService instance = UserService._();
 
   static const String baseUrl = 'https://gorest.co.in/public/v2';
-//  dotenv.env['API_URL']
   Future<List<User>> getAllUsers() async {
     try {
       http.Response response = await http.get(Uri.parse('${baseUrl}/users'),
@@ -31,6 +30,21 @@ class UserService {
     }
   }
 
+  Future<void> addUser(User user) async {
+    try {
+      http.Response response = await http.post(Uri.parse('${baseUrl}/users'),
+          body: user.toJson(),
+          headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
+      if (response.statusCode != 201) throw Exception('bad status code');
+      // print(response.body);
+      // var data = jsonDecode(response.body);
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
+  }
+
   Future<void> updateUser(User user) async {
     try {
       http.Response response = await http.put(
@@ -40,6 +54,35 @@ class UserService {
       if (response.statusCode != 200) throw Exception('bad status code');
       print(response.body);
       var data = jsonDecode(response.body);
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
+  }
+
+  Future<User> getUserById(int id) async {
+    try {
+      http.Response response = await http.put(
+          Uri.parse('${baseUrl}/users/${id}'),
+          headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
+      if (response.statusCode != 200) throw Exception('bad status code');
+      var data = jsonDecode(response.body);
+      return User.fromJson(data);
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+      return User(email: "", gender: "", id: 0, name: "", status: "");
+    }
+  }
+
+  Future<void> deleteUserById(int id) async {
+    try {
+      http.Response response = await http.delete(
+          Uri.parse('${baseUrl}/users/${id}'),
+          headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
+      if (response.statusCode != 204) throw Exception('bad status code');
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
