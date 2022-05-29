@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 class OutlinedRadioButton extends StatefulWidget {
   final String label;
@@ -35,7 +36,7 @@ class _OutlinedRadioButtonState extends State<OutlinedRadioButton> {
           Text(
             widget.label,
             style: GoogleFonts.outfit(
-              fontSize: 22.0,
+              fontSize: 16.sp,
               color: widget.current == widget.index ? Colors.white : null,
               fontWeight: FontWeight.w500,
             ),
@@ -64,21 +65,3 @@ class _OutlinedRadioButtonState extends State<OutlinedRadioButton> {
     );
   }
 }
-// int value = 0;
-//   Widget CustomRadioButton(String text, int index) {
-//     return OutlineButton(
-//       onPressed: () {
-//         setState(() {
-//           value = index;
-//         });
-//       },
-//       child: Text(
-//         text,
-//         style: TextStyle(
-//           color: (value == index) ? Colors.green : Colors.black,
-//         ),
-//       ),
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-//       borderSide:
-//           BorderSide(color: (value == index) ? Colors.green : Colors.black),
-//     );

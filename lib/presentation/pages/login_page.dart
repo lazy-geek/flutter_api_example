@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_example/business_logic/providers.dart';
+import 'package:flutter_api_example/data/services/userpref_service.dart';
+import 'package:flutter_api_example/presentation/pages/home_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final WidgetRef ref;
+  const LoginPage({Key? key, required this.ref}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +29,8 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Container(
                 constraints: BoxConstraints.tightFor(
-                    width: (MediaQuery.of(context).size.width * 90) / 100),
+                  width: 90.w,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -35,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       'Login',
                       style: GoogleFonts.outfit(
-                        fontSize: 28.0,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -43,10 +52,11 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20.0,
                     ),
                     TextField(
+                      controller: username,
                       decoration: InputDecoration(
                           hintText: 'email',
                           hintStyle: GoogleFonts.outfit(
-                            fontSize: 18.0,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -68,10 +78,12 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20.0,
                     ),
                     TextField(
+                      controller: password,
+                      obscureText: true,
                       decoration: InputDecoration(
                           hintText: 'password',
                           hintStyle: GoogleFonts.outfit(
-                            fontSize: 18.0,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -93,7 +105,32 @@ class _LoginPageState extends State<LoginPage> {
                       height: 40.0,
                     ),
                     TextButton(
-                      onPressed: () => {},
+                      onPressed: () async {
+                        if (username.text == 'admin' &&
+                            password.text == 'admin') {
+                          await UserPrefService.instance.setLogin(true);
+                          widget.ref.refresh(loginStatusProvider);
+                          // Navigator.pushReplacement(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => HomePage()));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'wrong credentials',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.outfit(
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
+                              duration: Duration(seconds: 1),
+                            ),
+                          );
+                        }
+                      },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 12.0),
                         alignment: Alignment.center,
@@ -101,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           'Login',
                           style: GoogleFonts.outfit(
-                            fontSize: 28.0,
+                            fontSize: 22.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -128,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.bottomCenter,
                 allowDrawingOutsideViewBox: true,
                 width: MediaQuery.of(context).size.width,
-                height: (MediaQuery.of(context).size.height * 30) / 100,
+                height: 30.h,
               ),
             ],
           ),

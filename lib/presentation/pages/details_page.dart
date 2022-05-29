@@ -6,6 +6,7 @@ import 'package:flutter_api_example/presentation/pages/edit_page.dart';
 import 'package:flutter_api_example/presentation/widgets/user_card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 class DetailsPage extends ConsumerStatefulWidget {
   final int id;
@@ -57,7 +58,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
           label: const Text(
             'Edit',
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 24,
               fontWeight: FontWeight.w400,
             ),
           )),
@@ -72,14 +73,14 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
               },
               icon: Icon(
                 Icons.delete_outlined,
-                size: 28.0,
+                size: 22.sp,
               ),
             )
           ],
           title: Text(
             'Details',
             style: GoogleFonts.outfit(
-              fontSize: 28.0,
+              fontSize: 22.sp,
               fontWeight: FontWeight.w400,
             ),
           )),
@@ -97,7 +98,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                         Text(
                           'Name: ',
                           style: GoogleFonts.outfit(
-                            fontSize: 28.0,
+                            fontSize: 22.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -105,14 +106,13 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                           width: 5.0,
                         ),
                         SizedBox(
-                          width:
-                              ((MediaQuery.of(context).size.width * 65) / 100),
+                          width: 65.w,
                           child: Text(
                             user.name,
 
                             // overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.outfit(
-                              fontSize: 24.0,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -129,7 +129,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                         Text(
                           'Email: ',
                           style: GoogleFonts.outfit(
-                            fontSize: 28.0,
+                            fontSize: 22.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -137,14 +137,13 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                           width: 5.0,
                         ),
                         SizedBox(
-                          width:
-                              ((MediaQuery.of(context).size.width * 65) / 100),
+                          width: 65.w,
                           child: Text(
                             user.email,
 
                             // overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.outfit(
-                              fontSize: 24.0,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -160,7 +159,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                       Text(
                         'Gender: ',
                         style: GoogleFonts.outfit(
-                          fontSize: 28.0,
+                          fontSize: 22.sp,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -171,7 +170,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                         user.gender,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.outfit(
-                          fontSize: 24.0,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -185,7 +184,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                       Text(
                         'Status: ',
                         style: GoogleFonts.outfit(
-                          fontSize: 28.0,
+                          fontSize: 22.sp,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -196,7 +195,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                         user.status,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.outfit(
-                          fontSize: 24.0,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.w400,
                         ),
                       ),

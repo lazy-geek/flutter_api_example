@@ -6,6 +6,7 @@ import 'package:flutter_api_example/presentation/widgets/outlined_radio_button.d
 import 'package:flutter_api_example/presentation/widgets/user_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sizer/sizer.dart';
 
 class AddPage extends ConsumerStatefulWidget {
   const AddPage({Key? key}) : super(key: key);
@@ -44,9 +45,9 @@ class _AddPageState extends ConsumerState<AddPage> {
       appBar: AppBar(
           backgroundColor: const Color(0xFF0B6EFE),
           title: Text(
-            'Edit',
+            'Add',
             style: GoogleFonts.outfit(
-              fontSize: 28.0,
+              fontSize: 20.sp,
               fontWeight: FontWeight.w400,
             ),
           )),
@@ -64,7 +65,7 @@ class _AddPageState extends ConsumerState<AddPage> {
                     icon: Icon(Icons.person_outlined),
                     hintText: 'name',
                     hintStyle: GoogleFonts.outfit(
-                      fontSize: 18.0,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     enabledBorder: OutlineInputBorder(
@@ -93,7 +94,7 @@ class _AddPageState extends ConsumerState<AddPage> {
                     icon: Icon(Icons.email_outlined),
                     hintText: 'email',
                     hintStyle: GoogleFonts.outfit(
-                      fontSize: 18.0,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     enabledBorder: OutlineInputBorder(
@@ -174,7 +175,7 @@ class _AddPageState extends ConsumerState<AddPage> {
                 ],
               ),
               SizedBox(
-                height: ((MediaQuery.of(context).size.height * 35) / 100),
+                height: 35.h,
               ),
               Align(
                 alignment: Alignment.center,
@@ -203,7 +204,7 @@ class _AddPageState extends ConsumerState<AddPage> {
                     // padding: EdgeInsets.symmetric(vertical: 12.0),
                     alignment: Alignment.center,
 
-                    width: ((MediaQuery.of(context).size.width * 30) / 100),
+                    width: 30.w,
                     child: isLoading
                         ? CircularProgressIndicator(
                             color: Colors.white,
@@ -214,7 +215,7 @@ class _AddPageState extends ConsumerState<AddPage> {
                               Text(
                                 'Add',
                                 style: GoogleFonts.outfit(
-                                  fontSize: 22.0,
+                                  fontSize: 20.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500,
                                 ),

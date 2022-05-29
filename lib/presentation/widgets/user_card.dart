@@ -6,6 +6,7 @@ import 'package:flutter_api_example/presentation/pages/edit_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_api_example/data/models/user.dart';
+import 'package:sizer/sizer.dart';
 
 class UserCard extends ConsumerWidget {
   final User user;
@@ -50,42 +51,23 @@ class UserCard extends ConsumerWidget {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.person_outlined, size: 28.0),
+                        Icon(Icons.person_outlined, size: 20.sp),
                         SizedBox(
                           width: 5.0,
                         ),
                         SizedBox(
-                          width:
-                              ((MediaQuery.of(context).size.width * 50) / 100),
+                          width: 50.w,
                           child: Text(
                             user.name,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.outfit(
-                              fontSize: 28.0,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    // Chip(
-                    //   label: Text(
-                    //     user.gender,
-                    //     style: GoogleFonts.outfit(
-                    //       fontSize: 20.0,
-                    //       fontWeight: FontWeight.w400,
-                    //     ),
-                    //   ),
-                    // )
-                    // IconButton(
-                    //   padding: EdgeInsets.zero,
-                    //   icon: Icon(
-                    //     Icons.edit_outlined,
-                    //     size: 28.0,
-                    //   ),
-                    //   onPressed: () {},
-                    //   visualDensity: VisualDensity.compact,
-                    // ),
                   ],
                 ),
                 SizedBox(
@@ -98,19 +80,18 @@ class UserCard extends ConsumerWidget {
                     Flexible(
                       child: Row(
                         children: [
-                          Icon(Icons.email_outlined, size: 28.0),
+                          Icon(Icons.email_outlined, size: 16.sp),
                           SizedBox(
                             width: 5.0,
                           ),
                           SizedBox(
-                            width: ((MediaQuery.of(context).size.width * 65) /
-                                100),
+                            width: 65.w,
                             child: Text(
                               user.email,
                               softWrap: false,
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.outfit(
-                                fontSize: 18.0,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w300,
                               ),
                             ),
@@ -149,7 +130,7 @@ class UserCard extends ConsumerWidget {
                           children: [
                             Icon(
                               Icons.delete_outlined,
-                              size: 28.0,
+                              size: 16.sp,
                             ),
                             SizedBox(
                               width: 10.0,
@@ -157,7 +138,7 @@ class UserCard extends ConsumerWidget {
                             Text(
                               'Delete',
                               style: GoogleFonts.outfit(
-                                fontSize: 22.0,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -193,7 +174,7 @@ class UserCard extends ConsumerWidget {
                           children: [
                             Icon(
                               Icons.edit_outlined,
-                              size: 28.0,
+                              size: 16.sp,
                               color: Colors.white,
                             ),
                             SizedBox(
@@ -202,7 +183,7 @@ class UserCard extends ConsumerWidget {
                             Text(
                               'Edit',
                               style: GoogleFonts.outfit(
-                                fontSize: 22.0,
+                                fontSize: 16.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                               ),
