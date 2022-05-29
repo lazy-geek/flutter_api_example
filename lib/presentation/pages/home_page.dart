@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_api_example/business_logic/providers.dart';
 import 'package:flutter_api_example/data/models/user.dart';
 import 'package:flutter_api_example/data/services/user_service.dart';
+import 'package:flutter_api_example/data/services/userpref_service.dart';
 import 'package:flutter_api_example/presentation/pages/add_page.dart';
 import 'package:flutter_api_example/presentation/widgets/user_card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,10 +22,26 @@ class HomePage extends ConsumerWidget {
           title: Text(
             'Home',
             style: GoogleFonts.outfit(
-              fontSize: 28.0,
+              fontSize: 20.sp,
               fontWeight: FontWeight.w400,
             ),
-          )),
+          ),
+          actions: [
+            TextButton(
+                onPressed: () async {
+                  await UserPrefService.instance.setLogin(false);
+                  ref.refresh(loginStatusProvider);
+                  print("hello");
+                },
+                child: Text(
+                  'Logout',
+                  style: GoogleFonts.outfit(
+                    fontSize: 16.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ))
+          ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(

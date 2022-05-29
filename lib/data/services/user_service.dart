@@ -13,7 +13,7 @@ class UserService {
   static const String baseUrl = 'https://gorest.co.in/public/v2';
   Future<List<User>> getAllUsers() async {
     try {
-      http.Response response = await http.get(Uri.parse('${baseUrl}/users'),
+      http.Response response = await http.get(Uri.parse('$baseUrl/users'),
           headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
       if (response.statusCode != 200) throw Exception('bad status code');
       var data = jsonDecode(response.body);
@@ -32,7 +32,7 @@ class UserService {
 
   Future<void> addUser(User user) async {
     try {
-      http.Response response = await http.post(Uri.parse('${baseUrl}/users'),
+      http.Response response = await http.post(Uri.parse('$baseUrl/users'),
           body: user.toJson(),
           headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
       if (response.statusCode != 201) throw Exception('bad status code');
@@ -48,12 +48,10 @@ class UserService {
   Future<void> updateUser(User user) async {
     try {
       http.Response response = await http.put(
-          Uri.parse('${baseUrl}/users/${user.id}'),
+          Uri.parse('$baseUrl/users/${user.id}'),
           body: user.toJson(),
           headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
       if (response.statusCode != 200) throw Exception('bad status code');
-      print(response.body);
-      var data = jsonDecode(response.body);
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
@@ -63,8 +61,7 @@ class UserService {
 
   Future<User> getUserById(int id) async {
     try {
-      http.Response response = await http.put(
-          Uri.parse('${baseUrl}/users/${id}'),
+      http.Response response = await http.put(Uri.parse('$baseUrl/users/$id'),
           headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
       if (response.statusCode != 200) throw Exception('bad status code');
       var data = jsonDecode(response.body);
@@ -80,7 +77,7 @@ class UserService {
   Future<void> deleteUserById(int id) async {
     try {
       http.Response response = await http.delete(
-          Uri.parse('${baseUrl}/users/${id}'),
+          Uri.parse('$baseUrl/users/$id'),
           headers: {'Authorization': 'Bearer ${dotenv.env["API_KEY"]}'});
       if (response.statusCode != 204) throw Exception('bad status code');
     } catch (e) {
