@@ -59,15 +59,15 @@ class UserCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Chip(
-                      label: Text(
-                        user.gender,
-                        style: GoogleFonts.outfit(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    )
+                    // Chip(
+                    //   label: Text(
+                    //     user.gender,
+                    //     style: GoogleFonts.outfit(
+                    //       fontSize: 20.0,
+                    //       fontWeight: FontWeight.w400,
+                    //     ),
+                    //   ),
+                    // )
                     // IconButton(
                     //   padding: EdgeInsets.zero,
                     //   icon: Icon(
