@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_example/business_logic/providers.dart';
 import 'package:flutter_api_example/data/models/user.dart';
 import 'package:flutter_api_example/data/services/user_service.dart';
 import 'package:flutter_api_example/presentation/widgets/outlined_radio_button.dart';
 import 'package:flutter_api_example/presentation/widgets/user_card.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class EditPage extends StatefulWidget {
+class EditPage extends ConsumerStatefulWidget {
   final User user;
   const EditPage({Key? key, required this.user}) : super(key: key);
 
@@ -13,7 +15,7 @@ class EditPage extends StatefulWidget {
   _EditPageState createState() => _EditPageState();
 }
 
-class _EditPageState extends State<EditPage> {
+class _EditPageState extends ConsumerState<EditPage> {
   late TextEditingController name;
   late TextEditingController email;
   late int currentGender;
@@ -65,6 +67,8 @@ class _EditPageState extends State<EditPage> {
             children: [
               TextField(
                 controller: name,
+                keyboardType: TextInputType.name,
+                textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
                     icon: Icon(Icons.person_outlined),
                     hintText: 'name',
@@ -92,6 +96,8 @@ class _EditPageState extends State<EditPage> {
               ),
               TextField(
                 controller: email,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
                     icon: Icon(Icons.email_outlined),
                     hintText: 'email',
@@ -183,6 +189,8 @@ class _EditPageState extends State<EditPage> {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () async {
+                    if (email.text.trim() == "" || name.text.trim() == "")
+                      return;
                     User updatedUser = widget.user.copyWith(
                         email: email.text,
                         gender: currentGender == 0 ? 'male' : 'female',
@@ -195,6 +203,8 @@ class _EditPageState extends State<EditPage> {
                     setState(() {
                       isLoading = false;
                     });
+                    ref.refresh(usersProvider);
+                    Navigator.pop(context);
                   },
                   child: Container(
                     // padding: EdgeInsets.symmetric(vertical: 12.0),
@@ -202,7 +212,9 @@ class _EditPageState extends State<EditPage> {
 
                     width: ((MediaQuery.of(context).size.width * 30) / 100),
                     child: isLoading
-                        ? CircularProgressIndicator()
+                        ? CircularProgressIndicator(
+                            color: Colors.white,
+                          )
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
