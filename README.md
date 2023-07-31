@@ -1,8 +1,5 @@
 # CRUD Operations in an App
 
-A Feature Rich Google Keep Like Notes App Written In Flutter With Beautiful UI.
-
-
 
 
 ## Features
